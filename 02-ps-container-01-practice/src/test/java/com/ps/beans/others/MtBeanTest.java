@@ -18,9 +18,13 @@ public class MtBeanTest {
     @Test
     public void testConfig() {
         //TODO 6. Modify this class to use the new set of configuration files, created by resolving TODO 5.
-
+        //Configuration without wildcards
+        ApplicationContext ctxEnum =  new ClassPathXmlApplicationContext("classpath:spring/others/collections-cfg.xml"
+                , "classpath:spring/others/dateConverter-cfg.xml"
+                , "classpath:spring/others/factory-cfg.xml"
+                , "classpath:spring/others/num-cfg.xml");
         //TODO 7. Try to use wildcards as well.
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/others/sample-config-01.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/others/*-cfg.xml");
 
         MultipleTypesBean mtBean = (MultipleTypesBean) ctx.getBean("mtBean");
         assertNotNull(mtBean);
